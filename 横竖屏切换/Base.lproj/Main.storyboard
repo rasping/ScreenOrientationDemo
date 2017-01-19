@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-652" y="36"/>
         </scene>
-        <!--首页-->
+        <!--竖屏-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
@@ -63,9 +63,7 @@
                             <constraint firstItem="d6c-ES-tKh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="foI-hV-Vc3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="首页" id="1vg-Ld-FYD">
-                        <barButtonItem key="rightBarButtonItem" title="下一页" id="r94-3C-Onm"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="竖屏" id="1vg-Ld-FYD"/>
                     <connections>
                         <outlet property="testView" destination="d6c-ES-tKh" id="qfu-1G-Kgm"/>
                     </connections>

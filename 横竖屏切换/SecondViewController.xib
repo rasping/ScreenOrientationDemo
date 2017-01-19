@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SecondViewController">
             <connections>
+                <outlet property="naviBar" destination="2WY-EE-ySy" id="Tow-a0-gqF"/>
+                <outlet property="naviBarTop" destination="U2K-63-mxE" id="ZxA-j8-Kfb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,11 +28,31 @@
                         <action selector="btnClicked:" destination="-1" eventType="touchUpInside" id="zM7-7k-tOO"/>
                     </connections>
                 </button>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1s-cL-FH2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="8su-tj-E9m"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="横屏" id="2WY-EE-ySy"/>
+                    </items>
+                </navigationBar>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点我吧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bh-Lr-aMx">
+                    <rect key="frame" x="161.5" y="323" width="52" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="s1s-cL-FH2" secondAttribute="trailing" id="1Kt-RA-BkQ"/>
                 <constraint firstAttribute="bottom" secondItem="s81-Oz-mEZ" secondAttribute="bottom" id="EHB-X5-zrH"/>
+                <constraint firstItem="s1s-cL-FH2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="U2K-63-mxE"/>
                 <constraint firstAttribute="trailing" secondItem="s81-Oz-mEZ" secondAttribute="trailing" constant="8" id="X6Z-zf-cBP"/>
+                <constraint firstItem="2bh-Lr-aMx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="YSk-Xe-Yvb"/>
+                <constraint firstItem="2bh-Lr-aMx" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="pLT-GW-MUu"/>
+                <constraint firstItem="s1s-cL-FH2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rV9-Nd-3Qr"/>
             </constraints>
             <point key="canvasLocation" x="16" y="35"/>
         </view>

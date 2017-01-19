@@ -11,6 +11,8 @@
 @interface SecondViewController ()
 
 - (IBAction)btnClicked:(UIButton *)btn;
+@property (weak, nonatomic) IBOutlet UINavigationItem *naviBar;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *naviBarTop;
 
 @end
 
@@ -31,11 +33,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    backBtn.frame = CGRectMake(0, 0, 44, 44);
+    [backBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    self.naviBar.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    UIApplication *application = [UIApplication sharedApplication];
+    if (application.statusBarHidden) {
+        //显示导航栏
+        self.naviBarTop.constant = 0;
+        [UIView animateWithDuration:0.65 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+        });
+    } else {
+        //隐藏导航栏
+        self.naviBarTop.constant = -64;
+        [UIView animateWithDuration:0.65 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    }
 }
 
 #pragma mark - UIViewControllerRotation
@@ -58,6 +83,13 @@
 #pragma mark - Action
 
 - (IBAction)btnClicked:(UIButton *)btn
+{
+    if ([self.delegate respondsToSelector:@selector(secondViewController:btnClicked:)]) {
+        [self.delegate secondViewController:self btnClicked:btn];
+    }
+}
+
+- (void)backBtnClicked:(UIButton *)btn
 {
     if ([self.delegate respondsToSelector:@selector(secondViewController:btnClicked:)]) {
         [self.delegate secondViewController:self btnClicked:btn];
